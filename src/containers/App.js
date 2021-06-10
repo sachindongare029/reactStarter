@@ -1,6 +1,5 @@
 import React from "react";
-import Navbar from "../components/Navbar/Navbar";
-import { HashRouter, Router } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import history from "../routes/History";
 import Routes from "../routes/Routes";
 import { IntlProvider } from "react-intl";
@@ -10,12 +9,10 @@ import Loader from "../components/Loader/Loader";
 import "./App.scss";
 import { connect } from "react-redux";
 import { setCurrentLang } from "../store/Lang/LangAction";
-import Login from "./Login/Login";
 
 class App extends React.Component {
   render() {
     const { lang, loading } = this.props;
-    console.log('lang',lang);
     return (
       <IntlProvider locale={lang} messages={messages[lang]}>
         <div
@@ -23,11 +20,9 @@ class App extends React.Component {
           dir={lang === "ar" ? "rtl" : "ltr"}
         >
           {loading ? <Loader /> : null}
-          <HashRouter history={history}>
+          <HashRouter>
             <MaterialSnackbar />
-             {/* <Navbar /> */}
             <Routes lang={lang} />
-            {/* {<Login />} */}
           </HashRouter>
         </div>
       </IntlProvider>

@@ -1,67 +1,41 @@
 import React from "react";
-// import messages from "./../../assets/Local/messages";
 import { connect } from "react-redux";
 import { NavLink as Link } from "react-router-dom";
 import "./index.scss";
-import History from "../../routes/History";
-// import Auth from "../../utils/Auth";
 
-function Header(props) {
-  // render() {
-  // const { lang } = props;
-  // const message = messages[lang];
-  // console.log('window', window.location.href)
-  var isbase = window.location.href.includes("/dash");
-  function logout() {
-    History.push("/login");
-    // Auth.signOut();
-  }
+function Header() {
   return (
     <header className="container">
       <section className="top__section">
         <div>
-          <Link to="/dash">
+          <Link to="/" replace>
             <img src="" alt="company-logo" className="company-logo" />
           </Link>
         </div>
-        <div className="right__sub--section">
-          {isbase ? (
-            <span>
-              <span onClick={logout} className="login-btn btn">
-                Logout
-              </span>
-            </span>
-          ) : (
-            <Link to="/login" className="login-btn btn">
-              Log In
-            </Link>
-          )}
-        </div>
+        <div className="right__sub--section">hii</div>
       </section>
-      {isbase ? (
-        <section className="bottom__section">
-          <ul>
-            <li>
-              <Link
-                to={`/dash/upload-lists`}
-                activeStyle={{ textDecoration: "underline" }}
-              >
-                Upload LIST
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={`/dash/home`}
-                activeStyle={{ textDecoration: "underline" }}
-              >
-                List Bidding
-              </Link>
-            </li>
-          </ul>
-        </section>
-      ) : (
-        ""
-      )}
+      <section className="bottom__section">
+        <ul>
+          <li>
+            <Link
+              to={`/home`}
+              replace
+              activeStyle={{ textDecoration: "underline" }}
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={`/upload-lists`}
+              replace
+              activeStyle={{ textDecoration: "underline" }}
+            >
+              Upload LIST
+            </Link>
+          </li>
+        </ul>
+      </section>
     </header>
   );
 }
